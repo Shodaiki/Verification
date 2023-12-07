@@ -8,6 +8,7 @@ import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -23,11 +24,19 @@ public class SignedPage extends WebPage {
     @SpringBean
     private IUserService userService;
 
+    //@SpringBean
+    //private IChatService chatService;
+
     public SignedPage() {
         var name = MySession.get().getUserName();
         var userNameLabel = new Label("userName", name);
         add(userNameLabel);
 
+        var toChatLink = new BookmarkablePageLink<>("toChat", ChatPage.class);
+        add(toChatLink);
+
+        var toViewChatLink = new BookmarkablePageLink<>("toViewChat", ViewChatPage.class);
+        add(toViewChatLink);
         Link<Void> signoutLink = new Link<Void>("signout") {
 
             @Override
@@ -62,6 +71,7 @@ public class SignedPage extends WebPage {
             }
         };
         add(usersLV);
+
     }
 
 }

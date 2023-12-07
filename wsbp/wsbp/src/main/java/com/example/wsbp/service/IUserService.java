@@ -1,6 +1,7 @@
 package com.example.wsbp.service;
 
 import com.example.wsbp.data.AuthUser;
+import com.example.wsbp.data.Chat;
 
 import java.util.List;
 
