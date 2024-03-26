@@ -1,16 +1,20 @@
 package com.example.wsbp.data;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
-public class Chat implements Serializable{
+public class Chat implements Serializable {
 
     private final String userName;
 
     private final String msgBody;
 
-    public Chat(String userName, String msgBody) {
+    private final Timestamp chatTime;
+
+    public Chat(String userName, String msgBody, Timestamp chatTime) {
         this.userName = userName;
         this.msgBody = msgBody;
+        this.chatTime = chatTime;
     }
 
     public String getUserName() {
@@ -20,6 +24,9 @@ public class Chat implements Serializable{
     public String getMsgBody() {
         return msgBody;
     }
+
+    public Timestamp getChatTime() {return chatTime;}
+
 
     @Override
     public boolean equals(Object o) {

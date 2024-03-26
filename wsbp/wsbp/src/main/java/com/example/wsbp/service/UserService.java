@@ -44,4 +44,10 @@ public class UserService implements IUserService {
         return users;
     }
 
+    @Override
+    public void changeUser(String changeName, String userName){
+        int n = authUserRepos.update(changeName, userName);
+        System.out.println("記録行数：" + n);
+    }
+
 }

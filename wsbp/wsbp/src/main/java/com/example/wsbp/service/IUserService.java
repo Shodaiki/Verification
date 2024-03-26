@@ -15,4 +15,6 @@ public interface IUserService {
 
     public List<AuthUser> findAuthUsers();
 
+    public void changeUser(String changeName, String userName);
+
 }

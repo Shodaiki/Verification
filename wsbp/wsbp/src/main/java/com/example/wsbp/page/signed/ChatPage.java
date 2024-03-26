@@ -11,6 +11,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.validation.validator.StringValidator;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import java.sql.Timestamp;
+
 @AuthorizeInstantiation(Roles.USER)
 @MountPath("Chat")
 public class ChatPage extends WebPage {
@@ -23,6 +25,7 @@ public class ChatPage extends WebPage {
         var userNameModel = Model.of("");
         var msgBodyModel = Model.of("");
 
+
         //var toHomeLink = new BookmarkablePageLink<>("toHome", HomePage.class);
         //add(toHomeLink);
 
@@ -31,13 +34,16 @@ public class ChatPage extends WebPage {
             protected void onSubmit() {
                 var userName = userNameModel.getObject();
                 var msgBody = msgBodyModel.getObject();
+                var chatTime = chatService.makePostHMS();
                 var msg = "送信データ："
                         + userName
                         + ","
-                        + msgBody;
+                        + msgBody
+                        + ","
+                        + chatTime;
                 System.out.println(msg);
 
-                chatService.registerUser(userName, msgBody);
+                chatService.registerUser(userName, msgBody, chatTime);
                 setResponsePage(new ChatCompPage(userNameModel,msgBodyModel));
             }
         };

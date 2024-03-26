@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SingleColumnRowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
@@ -20,9 +21,9 @@ public class ChatRepository implements IChatRepository {
     }
 
     @Override
-    public int insert(String userName, String msgBody) {
-        var sql = "insert into chat values (?, ?)";
-        var n = jdbc.update(sql, userName, msgBody);
+    public int insert(String userName, String msgBody, Timestamp chatTime) {
+        var sql = "insert into chat values (?, ?, ?)";
+        var n = jdbc.update(sql, userName, msgBody, chatTime);
         return n;
     }
 
@@ -53,8 +54,7 @@ public class ChatRepository implements IChatRepository {
 
     @Override
     public List<Chat> reply() {
-        // auth_user テーブルの user_name, user_pass を検索する
-        String sql = "select user_name, msg_body from chat";
+        String sql = "select * from chat";
 
         // 検索用のSQLを実行する方法。
         // 取り出したいデータの型によって、第2引数の RowMapper を切り替える。
@@ -64,5 +64,19 @@ public class ChatRepository implements IChatRepository {
 
         // 取り出したデータ（Listの要素）をそのまま返値とする。
         return users;
+    }
+
+    @Override
+    public List<Chat> selectreply(String userName) {
+        String sql = "select * from chat where user_name = ?";
+
+        // 検索用のSQLを実行する方法。
+        // 取り出したいデータの型によって、第2引数の RowMapper を切り替える。
+        // ? を使うSQLであれば、第3引数の Object型配列 の要素に順番に設定する。
+        List<Chat> selectusers = jdbc.query(sql,
+                DataClassRowMapper.newInstance(Chat.class), userName);
+
+        // 取り出したデータ（Listの要素）をそのまま返値とする。
+        return selectusers;
     }
 }

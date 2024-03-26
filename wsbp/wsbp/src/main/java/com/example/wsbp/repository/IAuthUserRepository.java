@@ -21,4 +21,6 @@ public interface IAuthUserRepository {
 
     public List<AuthUser> find();
 
+    public int update(String changeName, String userName);
+
 }

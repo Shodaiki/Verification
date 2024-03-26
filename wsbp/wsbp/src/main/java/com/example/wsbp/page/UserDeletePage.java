@@ -18,7 +18,6 @@ public class UserDeletePage extends WebPage {
 
     public UserDeletePage() {
         var userNameModel = Model.of("");
-        var userPassModel = Model.of("");
 
         var toHomeLink = new BookmarkablePageLink<>("toHome", HomePage.class);
         add(toHomeLink);
@@ -27,11 +26,8 @@ public class UserDeletePage extends WebPage {
             @Override
             protected void onSubmit() {
                 var userName = userNameModel.getObject();
-                var userPass = userPassModel.getObject();
                 var msg = "送信データ："
-                        + userName
-                        + ","
-                        + userPass;
+                        + userName;
                 System.out.println(msg);
 
                 userService.removeUser(userName);
@@ -40,12 +36,8 @@ public class UserDeletePage extends WebPage {
         };
         add(userInfoForm);
 
-
         var userNameField = new TextField<>("userName", userNameModel);
         userInfoForm.add(userNameField);
-
-        var userPassField = new PasswordTextField("userPass", userPassModel);
-        userInfoForm.add(userPassField);
     }
 
 }

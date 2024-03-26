@@ -64,9 +64,9 @@ public class PullDownPage extends WebPage {
                 // 必ず空欄の選択肢を用意するように設定
                 setNullValid(true);
                 // 空欄の選択肢の送信を許可しないバリデーション
-                //setRequired(true);
+                setRequired(true);
                 // エラーメッセージに表示する名前を設定
-                //setLabel(Model.of("学籍番号の選択肢"));
+                setLabel(Model.of("学籍番号の選択肢"));
             }
 
             @Override

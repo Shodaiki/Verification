@@ -37,6 +37,10 @@ public class SignedPage extends WebPage {
 
         var toViewChatLink = new BookmarkablePageLink<>("toViewChat", ViewChatPage.class);
         add(toViewChatLink);
+
+        var toChangeNameLink = new BookmarkablePageLink<>("toChangeName", ChangeNamePage.class);
+        add(toChangeNameLink);
+
         Link<Void> signoutLink = new Link<Void>("signout") {
 
             @Override
