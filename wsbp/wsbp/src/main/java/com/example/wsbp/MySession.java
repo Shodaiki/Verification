@@ -3,6 +3,7 @@ package com.example.wsbp;
 import org.apache.wicket.Session;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
+import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.request.Request;
 
 import java.util.Objects;
@@ -51,7 +52,7 @@ public class MySession extends AbstractAuthenticatedWebSession {
 
     public static MySession get() {
         // サーバーの中から Session を取り出す
-        return (MySession) Session.get();
+        return (MySession) WebSession.get();
     }
 
 }

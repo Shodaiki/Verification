@@ -35,7 +35,7 @@ public class UserMakerPage extends WebPage {
                         + userPass;
                 System.out.println(msg);
 
-                userService.registerUser(userName, userPass);
+                int n = userService.registerUser(userName, userPass);
                 setResponsePage(new UserMakerCompPage(userNameModel));
             }
         };

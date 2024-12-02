@@ -18,9 +18,10 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void registerUser(String userName, String userPass) {
+    public int registerUser(String userName, String userPass) {
         int n = authUserRepos.insert(userName, userPass);
         System.out.println("記録行数：" + n);
+        return n;
     }
 
 

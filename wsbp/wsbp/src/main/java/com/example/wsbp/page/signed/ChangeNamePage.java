@@ -34,6 +34,7 @@ public class ChangeNamePage extends WebPage {
                 System.out.println(msg);
 
                 userService.changeUser(changeName, userName);
+                MySession.get().sign(changeName);
                 setResponsePage(new ChangeNameCompPage(changeNameModel));
             }
         };

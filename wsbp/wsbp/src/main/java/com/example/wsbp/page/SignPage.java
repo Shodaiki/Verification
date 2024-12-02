@@ -21,43 +21,52 @@ public class SignPage extends WebPage {
 
     public SignPage() {
 
-        var userNameModel = Model.of("");
-        var userPassModel = Model.of("");
+        if (MySession.get().isSignedIn()) {
 
-        var userInfoForm = new Form<>("userInfo") {
-            @Override
-            protected void onSubmit() {
-                var userName = userNameModel.getObject();
-                var userPass = userPassModel.getObject();
-                if (service.existsUser(userName, userPass)) {
-                    MySession.get().sign(userName);
+            setResponsePage(new SignedPage());
+
+        } else {
+
+            var userNameModel = Model.of("");
+            var userPassModel = Model.of("");
+
+            var userInfoForm = new Form<>("userInfo") {
+                @Override
+                protected void onSubmit() {
+                    var userName = userNameModel.getObject();
+                    var userPass = userPassModel.getObject();
+                    if (service.existsUser(userName, userPass)) {
+                        MySession.get().sign(userName);
+                    }
+                    setResponsePage(new SignedPage());
                 }
-                setResponsePage(new SignedPage());
-            }
-        };
-        add(userInfoForm);
+            };
+            add(userInfoForm);
 
-        var userNameField = new TextField<>("userName", userNameModel) {
-            @Override
-            protected void onInitialize() {
-                super.onInitialize();
-                // 文字列の長さを8〜32文字に制限するバリデータ
-                add(StringValidator.lengthBetween(8, 32));
-            }
-        };
+            var userNameField = new TextField<>("userName", userNameModel) {
+                @Override
+                protected void onInitialize() {
+                    super.onInitialize();
+                    // 文字列の長さを8〜32文字に制限するバリデータ
+                    add(StringValidator.lengthBetween(8, 32));
+                }
+            };
 
-        userInfoForm.add(userNameField);
+            userInfoForm.add(userNameField);
 
-        var userPassField = new PasswordTextField("userPass", userPassModel) {
-            @Override
-            protected void onInitialize() {
-                super.onInitialize();
-                // 文字列の長さを8〜32文字に制限するバリデータ
-                add(StringValidator.lengthBetween(8, 32));
-            }
-        };
-        userInfoForm.add(userPassField);
+            var userPassField = new PasswordTextField("userPass", userPassModel) {
+                @Override
+                protected void onInitialize() {
+                    super.onInitialize();
+                    // 文字列の長さを8〜32文字に制限するバリデータ
+                    add(StringValidator.lengthBetween(8, 32));
+                }
+            };
+            userInfoForm.add(userPassField);
 
 
+        }
     }
+
+
 }
