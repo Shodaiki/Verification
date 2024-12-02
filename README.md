@@ -64,5 +64,5 @@ OKボタンを押して、上記で設定したデータベースのパスワー
 
 ## テーブルの作成
 1. wsbp.db.ddl内のsqlを以下の順で実行する 
-   i. AUTH_USER.sql
-   ii. CHAT.sql 
+   1.  AUTH_USER.sql
+   2. CHAT.sql 
