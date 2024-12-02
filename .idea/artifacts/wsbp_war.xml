@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="wsbp:war">
+    <output-path>$PROJECT_DIR$/wsbp/wsbp/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>wsbp</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="wsbp-20240327-074957.war">
+      <element id="artifact" artifact-name="wsbp:war exploded" />
+    </root>
+  </artifact>
+</component>

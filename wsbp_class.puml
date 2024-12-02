@@ -1,0 +1,172 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class com.example.wsbp.page.signed.SignedPage {
+- IUserService userService
+}
+'interface com.example.wsbp.service.ISampleService {
+'+ String makeCurrentHMS()
+'+ int makeRandInt()
+'}
+class com.example.wsbp.page.signed.SelectUserViewChatPage {
+- IChatService chatService
+- IUserService userService
+}
+class com.example.wsbp.page.UserDeleteCompPage {
+}
+class com.example.wsbp.MySession {
+- String userName
++ void sign(String)
++ Roles getRoles()
++ boolean isSignedIn()
++ String getUserName()
++ {static} MySession get()
+}
+class com.example.wsbp.page.CChoiceCompPage {
+}
+'class com.example.wsbp.service.SampleService {
+'+ String makeCurrentHMS()
+'+ int makeRandInt()
+'}
+class com.example.wsbp.page.SignPage {
+- IUserService service
+}
+interface com.example.wsbp.service.IChatService {
++ void registerUser(String,String,Timestamp)
++ void removeUser(String)
++ boolean existsUser(String,String)
++ Timestamp makePostHMS()
++ List<Chat> replyChat()
++ List<Chat> selectreplyChat(String)
+}
+class com.example.wsbp.page.UserDeletePage {
+- IUserService userService
+}
+class com.example.wsbp.data.Chat {
+- String userName
+- String msgBody
+- Timestamp chatTime
++ String getUserName()
++ String getMsgBody()
++ Timestamp getChatTime()
++ boolean equals(Object)
++ int hashCode()
+}
+class com.example.wsbp.page.signed.ViewChatPage {
+- IChatService chatService
+- IUserService userService
+}
+class com.example.wsbp.page.UserMakerCompPage {
+}
+class com.example.wsbp.page.signed.ChatPage {
+- IChatService chatService
+}
+class com.example.wsbp.page.signed.ChangeNamePage {
+~ IUserService userService
+}
+class com.example.wsbp.service.UserService {
+- IAuthUserRepository authUserRepos
++ void registerUser(String,String)
++ void removeUser(String)
++ boolean existsUser(String,String)
++ List<AuthUser> findAuthUsers()
++ void changeUser(String,String)
+}
+class com.example.wsbp.repository.ChatRepository {
+- JdbcTemplate jdbc
++ int insert(String,String,Timestamp)
++ int delete(String)
++ boolean exists(String,String)
++ List<Chat> reply()
++ List<Chat> selectreply(String)
+}
+'class com.example.wsbp.page.HomePage {
+'- ISampleService service
+'}
+class com.example.wsbp.repository.AuthUserRepository {
+- JdbcTemplate jdbc
++ int insert(String,String)
++ int delete(String)
++ boolean exists(String,String)
++ List<AuthUser> find()
++ int update(String,String)
+}
+class com.example.wsbp.page.signed.ChangeNameCompPage {
+}
+interface com.example.wsbp.repository.IAuthUserRepository {
++ int insert(String,String)
++ int delete(String)
++ boolean exists(String,String)
++ List<AuthUser> find()
++ int update(String,String)
+}
+interface com.example.wsbp.repository.IChatRepository {
+~ int insert(String,String,Timestamp)
+~ int delete(String)
+~ boolean exists(String,String)
+~ List<Chat> reply()
+~ List<Chat> selectreply(String)
+}
+class com.example.wsbp.page.PullDownPage {
+- IUserService userService
+}
+class com.example.wsbp.page.signed.ChatCompPage {
+}
+class com.example.wsbp.data.AuthUser {
+- String userName
+- String userPass
++ String getUserName()
++ String getUserPass()
++ boolean equals(Object)
++ int hashCode()
+}
+interface com.example.wsbp.service.IUserService {
++ void registerUser(String,String)
++ void removeUser(String)
++ boolean existsUser(String,String)
++ List<AuthUser> findAuthUsers()
++ void changeUser(String,String)
+}
+class com.example.wsbp.WsbpApplication {
++ {static} void main(String[])
+# Class<? extends AbstractAuthenticatedWebSession> getWebSessionClass()
+}
+class com.example.wsbp.service.ChatService {
+- IChatRepository chatRepos
++ void registerUser(String,String,Timestamp)
++ void removeUser(String)
++ boolean existsUser(String,String)
++ Timestamp makePostHMS()
++ List<Chat> replyChat()
++ List<Chat> selectreplyChat(String)
+}
+class com.example.wsbp.page.UserMakerPage {
+- IUserService userService
+}
+
+
+org.apache.wicket.markup.html.WebPage <|-- com.example.wsbp.page.signed.SignedPage
+org.apache.wicket.markup.html.WebPage <|-- com.example.wsbp.page.signed.SelectUserViewChatPage
+org.apache.wicket.markup.html.WebPage <|-- com.example.wsbp.page.UserDeleteCompPage
+org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession <|-- com.example.wsbp.MySession
+org.apache.wicket.markup.html.WebPage <|-- com.example.wsbp.page.CChoiceCompPage
+'com.example.wsbp.service.ISampleService <|.. com.example.wsbp.service.SampleService
+org.apache.wicket.markup.html.WebPage <|-- com.example.wsbp.page.SignPage
+org.apache.wicket.markup.html.WebPage <|-- com.example.wsbp.page.UserDeletePage
+java.io.Serializable <|.. com.example.wsbp.data.Chat
+org.apache.wicket.markup.html.WebPage <|-- com.example.wsbp.page.signed.ViewChatPage
+org.apache.wicket.markup.html.WebPage <|-- com.example.wsbp.page.UserMakerCompPage
+org.apache.wicket.markup.html.WebPage <|-- com.example.wsbp.page.signed.ChatPage
+org.apache.wicket.markup.html.WebPage <|-- com.example.wsbp.page.signed.ChangeNamePage
+com.example.wsbp.service.IUserService <|.. com.example.wsbp.service.UserService
+com.example.wsbp.repository.IChatRepository <|.. com.example.wsbp.repository.ChatRepository
+'org.apache.wicket.markup.html.WebPage <|-- com.example.wsbp.page.HomePage
+com.example.wsbp.repository.IAuthUserRepository <|.. com.example.wsbp.repository.AuthUserRepository
+org.apache.wicket.markup.html.WebPage <|-- com.example.wsbp.page.signed.ChangeNameCompPage
+org.apache.wicket.markup.html.WebPage <|-- com.example.wsbp.page.PullDownPage
+org.apache.wicket.markup.html.WebPage <|-- com.example.wsbp.page.signed.ChatCompPage
+java.io.Serializable <|.. com.example.wsbp.data.AuthUser
+com.giffing.wicket.spring.boot.starter.app.WicketBootSecuredWebApplication <|-- com.example.wsbp.WsbpApplication
+com.example.wsbp.service.IChatService <|.. com.example.wsbp.service.ChatService
+org.apache.wicket.markup.html.WebPage <|-- com.example.wsbp.page.UserMakerPage
+@enduml
