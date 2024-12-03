@@ -15,7 +15,7 @@ public class UserServiceTest {
     IUserService userService;
 
     @Test
-    @DisplayName("自分の学籍番号とパスワードを入力値として送ると、記録された行数（1行）が戻り値として返ってくる")
+    @DisplayName("名前とパスワードを引数として送ると、記録された行数（1行）が戻り値として返ってくる")
     public void Test(){
         String userName = "b0000000";
         String password = "b0000000";
