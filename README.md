@@ -44,8 +44,8 @@ H2のドライバ設定画面になる。ドライバとはDBをプログラム�
 - **コメント（comment）**：`講習会`
 - **パス（Path）**： `~/h2db/wsbp_prac;Mode=PostgreSQL;AUTO_SERVER=TRUE;`
     - ~ （チルダ） は日本語キーボードの場合、shift＋「へ」で入力
-- **ユーザ（User）**：あなたの学籍番号（`bxxxxxxx`）や忘れにくいユーザ名
-- **パスワード（Password）**： あなたの学籍番号（`bxxxxxxx`）や忘れにくいパスワード
+- **ユーザ（User）**：postgres
+- **パスワード（Password）**： postgres
 
 ※URLの項は自動で入力される
 
@@ -66,3 +66,4 @@ OKボタンを押して、上記で設定したデータベースのパスワー
 1. wsbp.db.ddl内のsqlを以下の順で実行する 
    1.  AUTH_USER.sql
    2. CHAT.sql 
+
