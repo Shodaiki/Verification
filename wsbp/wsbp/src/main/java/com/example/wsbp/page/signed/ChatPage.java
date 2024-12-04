@@ -43,7 +43,7 @@ public class ChatPage extends WebPage {
                         + chatTime;
                 System.out.println(msg);
 
-                chatService.registerUser(userName, msgBody, chatTime);
+                chatService.registerChat(userName, msgBody, chatTime);
                 setResponsePage(new ChatCompPage(userNameModel,msgBodyModel));
             }
         };

@@ -6,11 +6,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public interface IChatService {
-    public void registerUser(String userName, String msgBody, Timestamp chatTime);
-
-    public void removeUser(String msgBody);
-
-    public boolean existsUser(String userName, String msgBody);
+    public void registerChat(String userName, String msgBody, Timestamp chatTime);
 
     public Timestamp makePostHMS();
 

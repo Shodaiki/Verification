@@ -20,22 +20,9 @@ public class ChatService implements IChatService{
     }
 
     @Override
-    public void registerUser(String userName, String msgBody, Timestamp chatTime) {
+    public void registerChat(String userName, String msgBody, Timestamp chatTime) {
         int n = chatRepos.insert(userName, msgBody, chatTime);
         System.out.println("記録行数：" + n);
-    }
-
-    @Override
-    public void removeUser(String userName) {
-        int n = chatRepos.delete(userName);
-        System.out.println("削除行数：" + n);
-    }
-
-    @Override
-    public boolean existsUser(String userName, String msgBody) {
-        var result = chatRepos.exists(userName, msgBody);
-        System.out.println(userName + ", " + msgBody + " のユーザ照合結果：" + result);
-        return result;
     }
 
     @Override
