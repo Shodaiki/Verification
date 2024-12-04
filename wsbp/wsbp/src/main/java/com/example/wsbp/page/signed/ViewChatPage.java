@@ -1,7 +1,6 @@
 package com.example.wsbp.page.signed;
 
 import com.example.wsbp.data.AuthUser;
-import com.example.wsbp.page.CChoiceCompPage;
 import com.example.wsbp.service.IChatService;
 import com.example.wsbp.service.IUserService;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;

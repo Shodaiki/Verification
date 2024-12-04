@@ -1,7 +1,6 @@
 package com.example.wsbp.page;
 
 import com.example.wsbp.data.AuthUser;
-import com.example.wsbp.page.CChoiceCompPage;
 import com.example.wsbp.service.IUserService;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
@@ -46,7 +45,7 @@ public class PullDownPage extends WebPage {
                     sendingModel.setObject(dummyData);
                 }
                 // 次ページに渡すModelを使って、次ページ（ChoiceResultPage）を作成し移動する。
-                setResponsePage(new CChoiceCompPage(sendingModel));
+                setResponsePage(new ChoiceCompPage(sendingModel));
             }
         };
         add(form);

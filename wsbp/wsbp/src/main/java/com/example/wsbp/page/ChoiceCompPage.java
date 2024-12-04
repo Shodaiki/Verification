@@ -8,9 +8,9 @@ import org.apache.wicket.model.Model;
 import org.wicketstuff.annotation.mount.MountPath;
 
 @MountPath("ChoiceComp")
-public class CChoiceCompPage extends WebPage {
+public class ChoiceCompPage extends WebPage {
 
-    public CChoiceCompPage(IModel<AuthUser> model) {
+    public ChoiceCompPage(IModel<AuthUser> model) {
 
         var choicedAuthUser = model.getObject();
 
