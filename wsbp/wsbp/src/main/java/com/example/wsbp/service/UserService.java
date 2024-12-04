@@ -26,9 +26,10 @@ public class UserService implements IUserService {
 
 
     @Override
-    public void removeUser(String userName) {
+    public int removeUser(String userName) {
         int n = authUserRepos.delete(userName);
         System.out.println("削除行数：" + n);
+        return n;
     }
 
     @Override
@@ -46,9 +47,10 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void changeUser(String changeName, String userName){
+    public int changeUser(String changeName, String userName){
         int n = authUserRepos.update(changeName, userName);
         System.out.println("記録行数：" + n);
+        return n;
     }
 
 }
