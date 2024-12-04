@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest
@@ -16,7 +16,7 @@ public class UserServiceTest {
 
     @Test
     @DisplayName("名前とパスワードを引数として送ると、記録された行数（1行）が戻り値として返ってくる")
-    public void Test(){
+    public void Test01(){
         String userName = "b0000000";
         String password = "b0000000";
 
@@ -25,6 +25,18 @@ public class UserServiceTest {
         int actual = userService.registerUser(userName, password);
 
         assertEquals(expected, actual);
+    }
+
+
+    @Test
+    @DisplayName("名前とパスワードを引数として送り、存在すればtrueが返ってくる")
+    public void Test02(){
+        String userName = "b0000000";
+        String password = "b0000000";
+
+        var actual = userService.existsUser(userName, password);
+
+        assertTrue(actual);
     }
 
 }
