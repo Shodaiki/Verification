@@ -6,5 +6,5 @@ CREATE TABLE CHAT(
     --チャット内容
                           msg_body TEXT NOT NULL,
     --チャット投稿時間
-                          chat_time timestamp NOT NULL DEFAULT
+                          chat_time timestamp NOT NULL
 )
