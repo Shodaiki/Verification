@@ -24,10 +24,10 @@ public class HomePage extends WebPage {
         var youModel = Model.of("Wicket-Spring-Boot");
         var youLabel = new Label("you", youModel);
         add(youLabel);
-        var gakusekiModel = Model.of("b2211280");
+        var gakusekiModel = Model.of("admin");
         var gakusekiLabel = new Label("gakuseki", gakusekiModel);
         add(gakusekiLabel);
-        var shimeiModel = Model.of("小路大貴");
+        var shimeiModel = Model.of("Admin");
         var shimeiLabel = new Label("shimei", shimeiModel);
         add(shimeiLabel);
         var timeModel = Model.of(service.makeCurrentHMS());

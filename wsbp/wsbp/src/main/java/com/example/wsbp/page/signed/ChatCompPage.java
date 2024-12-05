@@ -1,5 +1,6 @@
 package com.example.wsbp.page.signed;
 
+import com.example.wsbp.MySession;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
@@ -11,10 +12,10 @@ import java.sql.Timestamp;
 @MountPath("ChatComp")
 public class ChatCompPage extends WebPage {
 
-    public ChatCompPage(IModel<String> userNameModel, IModel<String> msgBodyModel) {
+    public ChatCompPage(IModel<String> msgBodyModel) {
 
 
-        var userNameLabel = new Label("userName", userNameModel);
+        var userNameLabel = new Label("userName", MySession.get().getUserName());
         add(userNameLabel);
 
         var msgBodyLabel = new Label("msgBody", msgBodyModel);

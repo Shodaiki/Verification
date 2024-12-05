@@ -1,5 +1,6 @@
 package com.example.wsbp.page.signed;
 
+import com.example.wsbp.MySession;
 import com.example.wsbp.service.IChatService;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
@@ -22,7 +23,7 @@ public class ChatPage extends WebPage {
 
     public ChatPage() {
 
-        var userNameModel = Model.of("");
+//        var userNameModel = Model.of("");
         var msgBodyModel = Model.of("");
 
 
@@ -32,7 +33,8 @@ public class ChatPage extends WebPage {
         var chatInfoForm = new Form<>("chatInfo") {
             @Override
             protected void onSubmit() {
-                var userName = userNameModel.getObject();
+//                var userName = userNameModel.getObject();
+                var userName = MySession.get().getUserName();
                 var msgBody = msgBodyModel.getObject();
                 var chatTime = chatService.makePostHMS();
                 var msg = "送信データ："
@@ -44,24 +46,24 @@ public class ChatPage extends WebPage {
                 System.out.println(msg);
 
                 chatService.registerChat(userName, msgBody, chatTime);
-                setResponsePage(new ChatCompPage(userNameModel,msgBodyModel));
+                setResponsePage(new ChatCompPage(msgBodyModel));
             }
         };
         add(chatInfoForm);
 
 
-        var userNameField = new TextField<>("user_Name", userNameModel) {
-            // onInitialize() は全てのコンポーネントに備わっている、初期化時の処理。
-            // オーバーライドするときは super.onInitialize() を忘れずに残しておく。
-            @Override
-            protected void onInitialize() {
-                super.onInitialize();
-                // 文字列の長さを8〜32文字に制限するバリデータ
-                var validator = StringValidator.lengthBetween(8, 32);
-                add(validator);
-            }
-        };
-        chatInfoForm.add(userNameField);
+//        var userNameField = new TextField<>("user_Name", userNameModel) {
+//            // onInitialize() は全てのコンポーネントに備わっている、初期化時の処理。
+//            // オーバーライドするときは super.onInitialize() を忘れずに残しておく。
+//            @Override
+//            protected void onInitialize() {
+//                super.onInitialize();
+//                // 文字列の長さを8〜32文字に制限するバリデータ
+//                var validator = StringValidator.lengthBetween(8, 32);
+//                add(validator);
+//            }
+//        };
+//        chatInfoForm.add(userNameField);
 
         var msgBodyField = new TextField<>("msg_body", msgBodyModel);
         chatInfoForm.add(msgBodyField);
