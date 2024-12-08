@@ -25,11 +25,8 @@ public class AuthUserRepository implements IAuthUserRepository {
     @Override
     public int insert(String userName, String userPass) {
         var sql = "insert into auth_user values (?, ?)";
-        var n = -1;
-        try {
-            n = jdbc.update(sql, userName, userPass);
-        } catch (DataAccessException e){
-        }
+
+        var n = jdbc.update(sql, userName, userPass);
 
         return n;
     }
@@ -37,11 +34,8 @@ public class AuthUserRepository implements IAuthUserRepository {
     @Override
     public int delete(String userName) {
         var sql = "delete from auth_user where user_name = ?";
-        var n = -1;
-        try {
-            n = jdbc.update(sql, userName);
-        }catch (DataAccessException e){
-        }
+
+        var n = jdbc.update(sql, userName);
 
         return n;
     }
@@ -84,11 +78,7 @@ public class AuthUserRepository implements IAuthUserRepository {
         var sql = "update auth_user set user_name = ?"
                 + "where user_name = ?";
 
-        var n = -1;
-        try{
-            n = jdbc.update(sql, changeName, userName);
-        } catch (DataAccessException e){
-        }
+        var n = jdbc.update(sql, changeName, userName);
 
         return n;
     }
