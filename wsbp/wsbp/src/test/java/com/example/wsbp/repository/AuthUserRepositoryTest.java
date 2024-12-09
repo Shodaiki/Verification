@@ -35,8 +35,8 @@ public class AuthUserRepositoryTest {
     @Test
     @DisplayName("userNameとuserPassを入力値として送ると、正常に記録され記録行数（1行）が返ってくる")
     public void TestWhite01(){
-        String userName = "b1111111";
-        String password = "b1111111";
+        String userName = "b0000000";
+        String password = "b0000000";
 
         int expected = 1;
 
