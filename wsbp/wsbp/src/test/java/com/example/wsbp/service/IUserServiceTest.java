@@ -1,11 +1,10 @@
 package com.example.wsbp.service;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -35,8 +34,9 @@ public class IUserServiceTest {
     }
 
     @Test
+    @RepeatedTest(10)
     @DisplayName("名前とパスワードを引数として送ると、記録された行数（1行）が戻り値として返ってくる")
-    public void TestBlack(){
+    public void Test01(){
         String userName = "b0000000";
         String password = "b0000000";
 
@@ -45,6 +45,20 @@ public class IUserServiceTest {
         int actual = userService.registerUser(userName, password);
 
         assertEquals(expected, actual);
+
+//        fail();
+    }
+
+
+    @Test
+    @RepeatedTest(10)
+    @DisplayName("登録されている名前とパスワードを引数として送ると、例外がスローされる")
+    public void Test02(){
+        String userName = "b1111111";
+        String password = "b1111111";
+
+        assertThrows(RuntimeException.class,  () -> userService.registerUser(userName, password));
+
     }
 
 }
