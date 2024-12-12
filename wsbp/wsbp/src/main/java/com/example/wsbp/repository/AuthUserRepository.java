@@ -75,7 +75,7 @@ public class AuthUserRepository implements IAuthUserRepository {
 
     @Override
     public int update(String changeName, String userName){
-        var sql = "update auth_user set user_name = ?"
+        var sql = "update auth_user set user_name = ? "
                 + "where user_name = ?";
 
         var n = jdbc.update(sql, changeName, userName);
