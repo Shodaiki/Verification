@@ -15,6 +15,6 @@ public interface IUserService {
 
     public List<AuthUser> findAuthUsers();
 
-    public void changeUser(String changeName, String userName);
+    public int changeUser(String changeName, String userName);
 
 }

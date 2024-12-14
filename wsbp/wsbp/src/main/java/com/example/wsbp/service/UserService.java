@@ -46,9 +46,11 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void changeUser(String changeName, String userName){
+    public int changeUser(String changeName, String userName){
         int n = authUserRepos.update(changeName, userName);
         System.out.println("記録行数：" + n);
+
+        return n;
     }
 
 }
