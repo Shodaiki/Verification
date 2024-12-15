@@ -2,12 +2,12 @@ package com.example.wsbp.data;
 
 import java.io.Serializable;
 
-// AUTH_USER テーブルのデータを入れるクラス
+// AUTH_USER_FV テーブルのデータを入れるクラス
 // Wicketの Model に使うかもしれないクラスは、 implements Serializable をつける
 public class AuthUser implements Serializable {
 
-    private final String userName;  // auth_userテーブルのuser_name列のデータ
-    private final String userPass;  // auth_userテーブルのuser_pass列のデータ
+    private final String userName;  // auth_user_fvテーブルのuser_name列のデータ
+    private final String userPass;  // auth_user_fvテーブルのuser_pass列のデータ
 
     public AuthUser(String userName, String userPass) {
         this.userName = userName;

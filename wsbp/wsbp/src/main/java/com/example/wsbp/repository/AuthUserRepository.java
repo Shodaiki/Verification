@@ -24,7 +24,7 @@ public class AuthUserRepository implements IAuthUserRepository {
 
     @Override
     public int insert(String userName, String userPass) {
-        var sql = "insert into auth_user values (?, ?)";
+        var sql = "insert into auth_user_fv values (?, ?)";
         var n = jdbc.update(sql, userName, userPass);
 
         return n;
@@ -32,7 +32,7 @@ public class AuthUserRepository implements IAuthUserRepository {
 
     @Override
     public int delete(String userName) {
-        var sql = "delete from auth_user where user_name = ?";
+        var sql = "delete from auth_user_fv where user_name = ?";
         var n = jdbc.update(sql, userName);
 
         return n;
@@ -40,9 +40,9 @@ public class AuthUserRepository implements IAuthUserRepository {
 
     @Override
     public boolean exists(String userName, String userPass) {
-        // ユーザ名とパスワードが一致する情報が auth_user テーブルにあれば、true を返す
+        // ユーザ名とパスワードが一致する情報が auth_user_fv テーブルにあれば、true を返す
         // テーブルになければ、何も返さない
-        var sql = "select true from auth_user "
+        var sql = "select true from auth_user_fv "
                 + "where user_name = ? and user_pass = ?";
 
         // 検索用のSQLを実行する方法。検索結果をList（可変長配列）で返す。
@@ -58,8 +58,8 @@ public class AuthUserRepository implements IAuthUserRepository {
 
     @Override
     public List<AuthUser> find() {
-        // auth_user テーブルの user_name, user_pass を検索する
-        String sql = "select user_name, user_pass from auth_user";
+        // auth_user_fv テーブルの user_name, user_pass を検索する
+        String sql = "select user_name, user_pass from auth_user_fv";
 
         // 検索用のSQLを実行する方法。
         // 取り出したいデータの型によって、第2引数の RowMapper を切り替える。
@@ -73,7 +73,7 @@ public class AuthUserRepository implements IAuthUserRepository {
 
     @Override
     public int update(String changeName, String userName){
-        var sql = "update auth_user set user_name = ? "
+        var sql = "update auth_user_fv set user_name = ? "
                 + "where user_name = ?";
         var n = jdbc.update(sql, changeName, userName);
 
