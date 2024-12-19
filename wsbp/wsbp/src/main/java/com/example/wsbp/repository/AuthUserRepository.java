@@ -2,7 +2,6 @@ package com.example.wsbp.repository;
 
 import com.example.wsbp.data.AuthUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.DataClassRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SingleColumnRowMapper;
@@ -26,7 +25,6 @@ public class AuthUserRepository implements IAuthUserRepository {
     public int insert(String userName, String userPass) {
         var sql = "insert into auth_user values (?, ?)";
         var n = jdbc.update(sql, userName, userPass);
-
         return n;
     }
 
@@ -34,7 +32,6 @@ public class AuthUserRepository implements IAuthUserRepository {
     public int delete(String userName) {
         var sql = "delete from auth_user where user_name = ?";
         var n = jdbc.update(sql, userName);
-
         return n;
     }
 
@@ -73,7 +70,9 @@ public class AuthUserRepository implements IAuthUserRepository {
 
     @Override
     public int update(String changeName, String userName){
-        var sql = "update auth_user set user_name = ? " + " where user_name = ?";
+        var sql = "update auth_user set user_name = ? "
+                + "where user_name = ?";
+
         var n = jdbc.update(sql, changeName, userName);
 
         return n;
