@@ -80,8 +80,8 @@ public class IUserServiceTest {
     @Test
     @DisplayName("不正な名前とログインしているユーザ名を引数として送ると、例外が発生する")
     public void Test04() {
-        String userName = "b2222222";
-        String changeName = null;
+        String userName = null;
+        String changeName = "11111111";
 
         assertThrows(RuntimeException.class, () -> userService.changeUser(changeName, userName));
     }
