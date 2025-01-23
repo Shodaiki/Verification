@@ -36,7 +36,7 @@ public class ChatRepository implements IChatRepository {
 
     @Override
     public boolean exists(String userName, String msgBody) {
-        // ユーザ名とパスワードが一致する情報が auth_user テーブルにあれば、true を返す
+        // ユーザ名とパスワードが一致する情報が auth_user_fv テーブルにあれば、true を返す
         // テーブルになければ、何も返さない
         var sql = "select true from chat "
                 + "where user_name = ? and msg_body = ?";
