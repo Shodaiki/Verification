@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/wsbp/wsbp/wsbp.iml" filepath="$PROJECT_DIR$/wsbp/wsbp/wsbp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Verification.iml" filepath="$PROJECT_DIR$/.idea/Verification.iml" />
     </modules>
   </component>
 </project>
